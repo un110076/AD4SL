@@ -1,0 +1,29 @@
+from numpy import *
+from intrinsic import *
+from external import *
+
+def payoff (d,p) {
+  #pragma noprimal 
+  p[0]=gt0(d[1]-d[0])
+  return p
+}
+
+def black_scholes_call (x,y,M) {
+  s=[0.0]*M
+  #pragma notbr 
+  s=mc(x,s,M)
+  d=[0.0]*2
+  p=[0.0]*1
+  for I in range(M) {
+    #pragma notbr 
+    d[0]=x[3]
+    d[1]=s[I]
+    #pragma notbr 
+    p=payoff(d,p)
+    #pragma notbr 
+    y[0]=y[0]+exp(-x[1])*p[0]
+  }
+  #pragma noprimal 
+  y[0]=y[0]/M
+  return y
+}

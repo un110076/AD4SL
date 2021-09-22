@@ -1,0 +1,12 @@
+from numpy import *
+
+def speelpenning (x,y,I) {
+  s=[1.0]*1
+  #pragma notbr
+  y[0]=1.0
+  for J in range(I) {
+    s[0]=x[J]/s[0]
+    y[0]=y[0]+y[0]/s[0]
+  }
+  return y
+}

@@ -1,0 +1,7 @@
+from numpy import *
+
+def test01 (x,y) {
+  y[0]=x[0]*exp(-x[0])/(exp(x[0])-x[0])+(x[0])
+  y[0]=y[0]+exp(x[0])/(exp(y[0])-x[0])/(x[0])
+  return y
+}
